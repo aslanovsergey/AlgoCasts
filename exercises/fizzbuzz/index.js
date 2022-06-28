@@ -12,6 +12,25 @@
 //   4
 //   buzz
 
-function fizzBuzz(n) {}
+function fizzBuzz(n) {
+  for (let index = 1; index <= n; index++) {
+    fizzBuzzLogic(index);
+  }
+
+  function fizzBuzzLogic(n) {
+    const mutiplyOf3 = n % 3 == 0;
+    const mutiplyOf5 = n % 5 == 0;
+
+    if (mutiplyOf3 && mutiplyOf5) {
+      console.log("fizzbuzz");
+    } else if (mutiplyOf5) {
+      console.log("buzz");
+    } else if (mutiplyOf3) {
+      console.log("fizz");
+    } else {
+      console.log(n);
+    }
+  }
+}
 
 module.exports = fizzBuzz;
