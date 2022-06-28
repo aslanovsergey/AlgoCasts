@@ -20,8 +20,8 @@ function chunk(array, size) {
         endPosition = array.length;
       }
 
-      const chink = array.slice(startPosition, endPosition);
-      chunks[index] = chink;
+      const chunk = array.slice(startPosition, endPosition);
+      chunks[index] = chunk;
     } else {
         break;
     }
