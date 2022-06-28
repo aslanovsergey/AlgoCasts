@@ -9,31 +9,42 @@
 //   anagrams('Hi there', 'Bye there') --> False
 
 function anagrams(stringA, stringB) {
-    function stringToMap(str) {
-        const map = {};
+  function stringToMap(str) {
+    const map = {};
 
-        for (const char of str) {
-            map[char] = (map[char] ? map[char] : 0) + 1
-        }
-
-        return map;
+    for (const char of str) {
+      if (!isLetter(char)) {
+        continue;
+      }
+      var charLower = char.toLowerCase();
+      map[charLower] = (map[charLower] ? map[charLower] : 0) + 1;
     }
 
-    const mapA = stringToMap(stringA);
-    const mapB = stringToMap(stringB);
+    return map;
+  }
 
-    let equal = true;
-    for (const key in mapA) {
-        const value = mapA[key];
-        
-        if(mapB[key] != value) {
-            equal = false;
-            break;
-        }
+  function isLetter(c) {
+    return c.match(/[a-z]/i);
+  }
+
+  const mapA = stringToMap(stringA);
+  const mapB = stringToMap(stringB);
+  
+  if(Object.keys(mapA).length != Object.keys(mapB).length) {
+      return false;
+  }
+
+  let equal = true;
+  for (const key in mapA) {
+    const value = mapA[key];
+
+    if (mapB[key] != value) {
+      equal = false;
+      break;
     }
+  }
 
-    return equal;
-
+  return equal;
 }
 
 module.exports = anagrams;
