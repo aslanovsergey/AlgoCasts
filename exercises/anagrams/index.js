@@ -17,14 +17,14 @@ function anagrams(stringA, stringB) {
         continue;
       }
       var charLower = char.toLowerCase();
-      map[charLower] = (map[charLower] ? map[charLower] : 0) + 1;
+      map[charLower] = map[charLower]++ || 1;
     }
 
     return map;
   }
 
   function isLetter(c) {
-    return c.match(/[a-z]/i);
+    return c.match(/[a-z]/gi);
   }
 
   const mapA = stringToMap(stringA);
