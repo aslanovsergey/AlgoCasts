@@ -22,7 +22,7 @@ function pyramid(n) {
       if (rowNumber == 1) {
         hashesNumber = rowNumber;
       } else {
-        hashesNumber = hashesNumber + 2
+        hashesNumber = hashesNumber + 2;
       }
       const hashesString = "#".repeat(hashesNumber);
       const spacesNumber = rowLength - hashesNumber;
