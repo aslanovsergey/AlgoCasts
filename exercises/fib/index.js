@@ -9,22 +9,18 @@
 //   fib(4) === 3
 
 function fib(n) {
-  const array = [];
+  const array = [0, 1];
 
-  for (let index = 0; index <= n; index++) {
-    if (index == 0) {
-      array[index] = 0;
-    } else if (index == 1) {
-      array[index] = 1;
-    } else {
+  for (let index = 2; index <= n; index++) {
+
       const first = array[array.length - 1];
       const second = array[array.length - 2];
 
       array[index] = first + second;
-    }
+    
   }
 
-  return array[array.length - 1];
+  return array[n];
 }
 
 module.exports = fib;
