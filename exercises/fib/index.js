@@ -32,20 +32,27 @@
 //   return array[n];
 // }
 
-const cache = {};
+function memoize(fn) {
+  const cache = {};
 
-function fib(n) {
+  return function (n) {
+    if (!cache[n]) {
+        const value = fn(n);
+        cache[n] = value;
+    }
+    
+    return cache[n];
+  };
+}
 
+function slowFib(n) {
   if (n < 2) {
     return n;
   }
 
-  if (!cache[n]) {
-    const value = fib(n - 1) + fib(n - 2);
-    cache[n] = value;
-  }
-
-  return cache[n];
+  return fib(n - 1) + fib(n - 2);
 }
+
+var fib = memoize(slowFib);
 
 module.exports = fib;
