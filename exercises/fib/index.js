@@ -8,19 +8,28 @@
 // Example:
 //   fib(4) === 3
 
-function fib(n) {
-  const array = [0, 1];
+// function fib(n) {
+//   const array = [0, 1];
 
-  for (let index = 2; index <= n; index++) {
+//   for (let index = 2; index <= n; index++) {
+//       const first = array[array.length - 1];
+//       const second = array[array.length - 2];
+//       array[index] = first + second;
+//   }
 
-      const first = array[array.length - 1];
-      const second = array[array.length - 2];
+//   return array[n];
+// }
 
-      array[index] = first + second;
-    
+function fib(n, array = [0, 1]) {
+    if(array.length < n + 1) {
+        const a = array[array.length - 1];
+        const b = array[array.length - 2];
+        array.push(a + b);
+
+        fib(n, array);
+    }
+  
+    return array[n];
   }
-
-  return array[n];
-}
 
 module.exports = fib;
