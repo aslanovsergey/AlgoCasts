@@ -15,9 +15,8 @@ class Node {
 class LinkedList {
   constructor() {
     this.list = [];
+    this.head = null
   }
-
-  head = null;
 
   insertFirst(data) {
     let newHeadNode;
