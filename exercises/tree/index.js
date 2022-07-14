@@ -10,8 +10,60 @@
 // on the tree class.  Each method should accept a
 // function that gets called with each element in the tree
 
-class Node {}
+class Node {
+  constructor(data) {
+    this.data = data;
+    this.children = [];
+  }
 
-class Tree {}
+  add(data) {
+    const newNode = new Node(data);
+    this.children.push(newNode);
+  }
+
+  remove(child) {
+    const indexOfChild = this.children.indexOf(child);
+    this.children.splice(indexOfChild, 1);
+  }
+}
+
+class Tree {
+  constructor() {
+    this.root = null;
+  }
+
+  traverseBF(fn) {
+    if (this.root) {
+      fn(this.root);
+      let levelNodes = this.root.children || [];
+      while (levelNodes.length) {
+        const nextLevelChildren = [];
+        for (const node of levelNodes) {
+          fn(node);
+          if (node.children.length) {
+            nextLevelChildren.push(...node.children);
+          }
+        }
+        levelNodes = nextLevelChildren;
+      }
+    }
+  }
+
+  traverseDF(fn) {
+    if (this.root) {
+      fn(this.root);
+      applyToChildrenRecursive(this.root.children);
+    }
+
+    function applyToChildrenRecursive(children) {
+      for (const childNode of children) {
+        fn(childNode);
+        if (childNode.children.length) {
+          applyToChildrenRecursive(childNode.children);
+        }
+      }
+    }
+  }
+}
 
 module.exports = { Tree, Node };
